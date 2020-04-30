@@ -1,5 +1,5 @@
 SPC:
-  nacos: 
+  nacos:
     serrver-addr: 127.0.0.1:8001
 
 spring:
@@ -35,9 +35,11 @@ logging:
     root: info
     org.springframework: info
 
-
 management:
   endpoints:
     web:
       exposure:
-        include: refresh,health,info,env
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS

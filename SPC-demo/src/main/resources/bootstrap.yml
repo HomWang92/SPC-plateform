@@ -14,3 +14,12 @@ spring:
         group: DEFAULT_GROUP
         prefix: SPC-demo
         file-extension: yaml
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
