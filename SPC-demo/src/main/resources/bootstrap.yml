@@ -1,0 +1,16 @@
+server:
+  port: 10000
+spring:
+  application:
+    name: SPC-demo
+  main:
+    allow-bean-definition-overriding: true
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8001
+      config:
+        server-addr: localhost:8001
+        group: DEFAULT_GROUP
+        prefix: SPC-demo
+        file-extension: yaml

@@ -1,0 +1,43 @@
+SPC:
+  nacos: 
+    serrver-addr: 127.0.0.1:8001
+
+spring:
+  application:
+    name: SPC-gateway
+  main:
+    allow-bean-definition-overriding: true
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${SPC.nacos.serrver-addr}
+        group: DEFAULT_GROUP
+      config:
+        server-addr: ${SPC.nacos.serrver-addr}
+        group: DEFAULT_GROUP
+        prefix: SPC-gateway
+        file-extension: yaml
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lowerCaseServiceId: true
+      routes:
+        #----------------------demo服务------------------------------------------
+        - id: SPC-demo
+          uri: lb://SPC-demo
+          predicates:
+            - Path= /demo/**
+          filters:
+            - StripPrefix= 1
+logging:
+  level:
+    root: info
+    org.springframework: info
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh,health,info,env

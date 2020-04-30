@@ -1,0 +1,18 @@
+server:
+  port: 53020
+  servlet:
+    context-path: /uaa
+spring:
+  application:
+    name: uaa-service
+  main:
+    allow-bean-definition-overriding: true
+  http:
+    encoding:
+      enabled: true
+      charset: UTF-8
+      force: true
+logging:
+  level:
+    root: info
+    org.springframework.web: info

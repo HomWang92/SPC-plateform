@@ -1,0 +1,55 @@
+server:
+  port: 56020
+
+#配置服务提供方的地址（ip和端口）
+provider:
+  address: 127.0.0.1:56010
+#common:
+#  name: xiaoming
+#  addr: shanghai
+
+spring:
+  application:
+    name: nacos-restful-consumer #服务名
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848  #服务发现中心地址
+        namespace: 55aebc57-547f-46a1-ba72-733fe17b9204 #指定命名空间的id
+      config:
+        server-addr: 127.0.0.1:8848  #配置中心地址
+        file-extension: yaml  #指定配置文件的扩展名，配置文件名称根据application.name的名称加扩展名拼装，为nacos-restful-consumer.yaml
+        namespace: ff31c10e-77f9-4502-b5b6-5ac257201c4a #指定命名空间的id
+        ext-config:
+          - data-id: ext-config-common01.yaml
+            group: COMMON_GROUP
+            refresh: true
+          - data-id: ext-config-common02.yaml
+            group: COMMON_GROUP
+            refresh: true
+#        ext-config[2]:
+#          data-id: ext-config-http.yaml
+#          group: COMMON_GROUP
+#          refresh: true
+
+dubbo:
+  scan:
+    # dubbo 服务扫描基准包
+    base-packages: com.hom
+  protocol:
+    # dubbo 协议
+    name: dubbo
+    # dubbo 协议端口
+    port: -1
+  registry:
+    address: nacos://127.0.0.1:8848
+  application:
+    qos-enable: false #dubbo运维服务是否开启
+  consumer:
+    check: false  #启动时就否检查依赖的服务
+  cloud:
+    subscribed-services: ""
+
+nacos-restful-provider:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
