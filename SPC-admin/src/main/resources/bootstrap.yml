@@ -9,6 +9,12 @@ spring:
     nacos:
       discovery:
         server-addr: localhost:8001
+      #        metadata:
+      #          user:
+      #            name: name
+      #            password: password
+      #            management:
+      #              context-path: /admin/actuator
       config:
         server-addr: localhost:8001
         group: DEFAULT_GROUP
@@ -17,9 +23,4 @@ spring:
 
 logging:
   level:
-    com:
-      alibaba:
-        cloud:
-          nacos:
-            client:
-              NacosPropertySourceBuilder: error
+    com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder: error

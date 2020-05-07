@@ -9,11 +9,17 @@ spring:
     nacos:
       discovery:
         server-addr: localhost:8001
-      config:
-        server-addr: localhost:8001
-        group: DEFAULT_GROUP
-        prefix: SPC-demo
-        file-extension: yaml
+#        metadata:
+#          user:
+#            name: name
+#            password: password
+#            management:
+#              context-path: /admin/actuator
+#      config:
+#        server-addr: localhost:8001
+#        group: DEFAULT_GROUP
+#        prefix: SPC-demo
+#        file-extension: yaml
 
 management:
   endpoints:
