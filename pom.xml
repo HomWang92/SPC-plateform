@@ -19,6 +19,7 @@
         <module>SPC-dubbo-service2</module>
         <module>SPC-admin</module>
         <module>SPC-demo</module>
+        <module>cloudalibaba-sentinel-service8401</module>
     </modules>
 
     <parent>
@@ -32,10 +33,13 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
 
-        <spring-boot.version>2.1.3.RELEASE</spring-boot.version>
-        <spring-cloud.version>Greenwich.SR3</spring-cloud.version>
-        <spring-platform-bom.version>Cairo-SR7</spring-platform-bom.version>
-        <!--        <alibaba.cloud.version>2.1.0.RELEASE</alibaba.cloud.version>-->
+        <!-- spring 版本 -->
+        <spring-boot.version>2.2.5.RELEASE</spring-boot.version>
+        <spring-cloud.version>2.2.2.RELEASE</spring-cloud.version>
+        <spring-cloud-openfeign.version>2.2.2.RELEASE</spring-cloud-openfeign.version>
+        <spring-cloud-dependencies.version>Hoxton.SR3</spring-cloud-dependencies.version>
+        <spring-cloud-alibaba.version>2.2.1.RELEASE</spring-cloud-alibaba.version>
+        <spring-boot-admin.version>2.2.2</spring-boot-admin.version>
 
         <org.projectlombok.version>1.18.0</org.projectlombok.version>
         <org.mapstruct.version>1.3.0.Final</org.mapstruct.version>
@@ -43,15 +47,7 @@
 
     <dependencyManagement>
         <dependencies>
-
-            <!--            <dependency>-->
-            <!--                <groupId>com.alibaba.cloud</groupId>-->
-            <!--                <artifactId>spring-cloud-alibaba-dependencies</artifactId>-->
-            <!--                <version>2.1.0.RELEASE</version>-->
-            <!--                <type>pom</type>-->
-            <!--                <scope>import</scope>-->
-            <!--            </dependency>-->
-
+            <!-- Spring Boot Dependencies -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
@@ -59,28 +55,33 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-
+            <!-- Spring Cloud Start -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
-                <version>0.9.0.RELEASE</version>
-                <type>pom</type>
-                <scope>import</scope>
+                <artifactId>spring-cloud-starter</artifactId>
+                <version>${spring-cloud.version}</version>
             </dependency>
-
+            <!-- Spring Cloud Dependencies -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Greenwich.RELEASE</version>
+                <version>${spring-cloud-dependencies.version}</version>
+                <type>pom</type>
+                <scope>runtime</scope>
+            </dependency>
+            <!-- Spring Cloud Alibaba Dependencies -->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring-cloud-alibaba.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
             <dependency>
-                <groupId>io.spring.platform</groupId>
-                <artifactId>platform-bom</artifactId>
-                <version>${spring-platform-bom.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-openfeign</artifactId>
+                <version>2.2.1.RELEASE</version>
             </dependency>
 
             <dependency>
@@ -90,9 +91,7 @@
             </dependency>
 
             <dependency>
-                <groupId>io.springfox
-                </groupId
-                >
+                <groupId>io.springfox</groupId>
                 <artifactId>springfox-swagger-ui</artifactId>
                 <version>2.9.2</version>
             </dependency>
