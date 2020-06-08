@@ -1,0 +1,31 @@
+server:
+  port: 8888
+
+jwt:
+  secret: secret
+  expiration: 7200000
+  token: Authorization
+
+spring:
+  application:
+    name: spring-demo
+  datasource:
+    url: jdbc:mysql://47.93.255.25:3306/user_db?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8
+    username: root
+    password: "!QAZ2wsx"
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      pool-name: Retail_HikariCP
+      minimum-idle: 5
+      idle-timeout: 180000
+      maximum-pool-size: 10
+      auto-commit: true
+      max-lifetime: 1800000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: update
+    database: mysql
+    show-sql: true

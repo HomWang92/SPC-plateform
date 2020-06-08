@@ -20,6 +20,9 @@
         <module>SPC-admin</module>
         <module>SPC-demo</module>
         <module>cloudalibaba-sentinel-service8401</module>
+        <module>SPC-uaa-v1</module>
+        <module>SPC-uaa-v2</module>
+        <module>SPC-order</module>
     </modules>
 
     <parent>
